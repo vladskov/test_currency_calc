@@ -55,9 +55,9 @@ class AdminUserController extends AdminBaseController
 			$password = $passwordEncoder->encodePassword( $user, $user->getPlainPassword(  ) );
 			$user->setPassword( $password );
 			$user->setRoles( array( 'ROLE_ADMIN' ) );
-			$user->setCreateAt( $this->user );
-			$user->setUpdateAt( $this->user );
-			$user->setActive( 1 );
+			$user->setCreateAtValue(  );
+			$user->setUpdateAtValue(  );
+			$user->setIsActive( 1 );
 			
 			$em->persist( $user );
 			$em->flush(  );
