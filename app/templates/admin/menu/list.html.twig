@@ -1,0 +1,16 @@
+<h2>Список Меню</h2>
+
+<div class="list-group w-75">
+	{% for menu in menus %}
+  <div class="list-group-item d-flex justify-content-between list-group-item-action align-items-center {{ menu.list_class }}">
+  		<div style="width:30px;"><a href="{{ path( 'admin_menu_swap', { id: menu.id } ) }}"><span class="status {{ menu.active_status }}"></span></a></div>
+  		<div style="width:50px;">{{ menu.id }}</div>
+	    <div style="width:calc(100% - 590px)">{{ menu.name}}</div>
+	    <div style="width:250px;">{{ menu.link }}</div>
+	    <div style="width:150px;">{{ menu.menu_mode}}</div>
+	    <div style="width:50px;">{{ menu.order_priority }}</div>
+	    <div style="width:30px;" ><a href="{{ path( 'admin_menu_edit', { id: menu.id } ) }}"><img src="{{ asset( 'public/assets/admin/images/edit.png' ) }}" alt="" /></a></div>
+	    <div style="width:30px;" ><a href="{{ path( 'admin_menu_del', { id: menu.id } ) }}"><img src="{{ asset( 'public/assets/admin/images/del.png' ) }}" alt="" /></a></div>
+  </div>
+	{% endfor %}
+</div>

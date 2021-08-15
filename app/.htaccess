@@ -1,0 +1,11 @@
+DirectoryIndex /public/index.php
+RewriteEngine On
+
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(.+) $l [L]
+
+RewriteCond %{DOCUMENT_ROOT}/public%{REQUEST_URI} -f
+RewriteRule ^(.+) /public/$l [L]
+
+Options +SymLinksIfOwnerMatch
+RewriteRule ^(.*)$ /public/index.php [QSA,L]

@@ -1,0 +1,14 @@
+<h2>Список Пользователей</h2>
+
+<div class="list-group w-75">
+	{% for user in users %}
+  <div class="list-group-item d-flex justify-content-between list-group-item-action align-items-center {{ user.list_class }}">
+  		<div style="width:30px;"><a href="{{ path( 'admin_user_swap', { id: user.id } ) }}"><span class="status {{ user.active_status }}"></span></a></div>
+  		<div style="width:50px;">{{ user.id }}</div>
+	    <div style="width:calc(100% - 490px)">{{ user.email}}</div>
+	    <div style="width:350px;">{{ user.roles | json_encode }}</div>
+	    <div style="width:30px;" ><a href="{{ path( 'admin_user_edit', { id: user.id } ) }}"><img src="{{ asset( 'public/assets/admin/images/edit.png' ) }}" alt="" /></a></div>
+	    <div style="width:30px;" ><a href="{{ path( 'admin_user_del', { id: user.id } ) }}"><img src="{{ asset( 'public/assets/admin/images/del.png' ) }}" alt="" /></a></div>
+  </div>
+	{% endfor %}
+</div>

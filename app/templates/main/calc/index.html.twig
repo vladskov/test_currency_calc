@@ -1,0 +1,46 @@
+{% extends 'main/base.html.twig' %}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-12 mt-3 text-center">
+    			<h1 class="display-4">{{ title }} </h1>
+            </div>
+        </div>
+    </div>
+    
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-12 mt-3 ">
+		    	<input type="hidden" id="rate" value="{{rates.euro}}">
+		    
+			    USD: <input type="text" id="usd" onkeyup="calc( 'usd' ); ">
+			    EURO: <input type="text" id="euro" onkeyup="calc( 'euro' ); ">
+			    
+			    <p class="mt-3 ml-2">Курс скачан: {{rates.create_at | date("Y-m-d H:i:s") }}</p>
+    		</div>
+    	</div>
+    </div>
+    
+<script>
+function calc( el_source ) {
+	el_factor = document.getElementById( 'rate' ).value;
+	if ( 'usd' == el_source ) {
+		el_val		= document.getElementById( 'usd' ).value;
+		dest_box_id	= 'euro';
+		new_val		= el_val*el_factor;
+	} else {
+		el_val		= document.getElementById( 'euro' ).value;
+		dest_box_id	= 'usd';
+		new_val		= el_val/el_factor;
+	}
+	
+	new_val				= parseInt( new_val*100 )/100;
+	document.getElementById( dest_box_id ).value = new_val;
+}
+
+calc(  );
+</script>
+    
+{% endblock %}

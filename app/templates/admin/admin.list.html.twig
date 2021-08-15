@@ -1,0 +1,27 @@
+{% extends 'admin/admin.base.html.twig' %}
+
+{% block body %}
+
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-12 mt-2">
+                 <a href="{{ path ( add_link) }}" class="btn btn-outline-success my-2 my-sm-0 ml-1" type="submit">{{ add_label }}</a>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-12 mt-3 text-center">
+                <h1 class="display-4">{{ title }} </h1>
+            </div>
+        </div>
+    </div>
+    <div class="container-fluid">
+        <div class="row no-gutters">
+            <div class="col-12 mt-2">
+                {{ list_block | raw }}
+            </div>
+        </div>
+    </div>
+    
+{% endblock %}

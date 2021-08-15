@@ -1,0 +1,13 @@
+<h2>Список Ролей</h2>
+<div class="list-group w-75">
+	{% for role in roles %}
+  <div class="list-group-item d-flex justify-content-between list-group-item-action align-items-center {{ role.list_class }}">
+  		<div style="width:30px;"><a href="{{ path( 'admin_role_swap', { id: role.id } ) }}"><span class="status {{ role.active_status }}"></span></a></div>
+  		<div style="width:50px;">{{ role.id }}</div>
+	    <div style="width:calc(100% - 390px)">{{ role.name}}</div>
+	    <div style="width:250px;">{{ role.code }}</div>
+	    <div style="width:30px;" ><a href="{{ path( 'admin_role_edit', { id: role.id } ) }}"><img src="{{ asset( 'public/assets/admin/images/edit.png' ) }}" alt="" /></a></div>
+	    <div style="width:30px;" ><a href="{{ path( 'admin_role_del', { id: role.id } ) }}"><img src="{{ asset( 'public/assets/admin/images/del.png' ) }}" alt="" /></a></div>
+  </div>
+	{% endfor %}
+</div>

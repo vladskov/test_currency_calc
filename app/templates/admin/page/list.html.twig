@@ -1,0 +1,13 @@
+<h2>Список страниц</h2>
+<div class="list-group w-75">
+	{% for page in pages %}
+  <div class="list-group-item d-flex justify-content-between list-group-item-action align-items-center {{ page.list_class }}">
+  		<div style="width:30px;"><a href="{{ path( 'admin_page_swap', { id: page.id } ) }}"><span class="status {{ page.active_status }}"></span></a></div>
+  		<div style="width:50px;">{{ page.id }}</div>
+	    <div style="width:calc(100% - 390px)">{{ page.title}}</div>
+	    <div style="width:250px;">{{ page.link }}</div>
+	    <div style="width:30px;" ><a href="{{ path( 'admin_page_edit', { id: page.id } ) }}"><img src="{{ asset( 'public/assets/admin/images/edit.png' ) }}" alt="" /></a></div>
+	    <div style="width:30px;" ><a href="{{ path( 'admin_page_del', { id: page.id } ) }}"><img src="{{ asset( 'public/assets/admin/images/del.png' ) }}" alt="" /></a></div>
+  </div>
+	{% endfor %}
+</div>

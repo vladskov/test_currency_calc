@@ -1,0 +1,13 @@
+<h2>Курсы валют</h2>
+
+<div class="list-group w-75">
+	{% for currency in currencies %}
+  <div class="list-group-item d-flex justify-content-between list-group-item-action align-items-center {{ currency.list_class }}">
+  		<div style="width:30px;"><a href="{{ path( 'admin_currency_swap', { id: currency.id } ) }}"><span class="status {{ currency.active_status }}"></span></a></div>
+  		<div style="width:50px;">{{ currency.id }}</div>
+	    <div style="width:calc(100% - 110px)">{{ currency.euro}}</div>
+	    <div style="width:250px">{{ currency.create_at | date("Y-m-d H:i:s") }}</div>
+	    <div style="width:30px;" ><a href="{{ path( 'admin_currency_del', { id: currency.id } ) }}"><img src="{{ asset( 'public/assets/admin/images/del.png' ) }}" alt="" /></a></div>
+  </div>
+	{% endfor %}
+</div>
