@@ -45,7 +45,7 @@ class CurrencyController extends BaseController
     public function calc(): Response
     {
     	$forRender	= parent::renderDefault(  );
-    	$forRender['title'] = 'Êîíâåğòîğ âàëşò';
+    	$forRender['title'] = 'ĞšĞ¾Ğ½Ğ²ĞµÑ€Ñ‚Ğ¾Ñ€ Ğ²Ğ°Ğ»ÑÑ‚';
     	
     	$data					= $this->getDoctrine()->getRepository( Currency::class )->findBy( array('is_active' => 1), array( 'id' => 'DESC' ), 1 ,0 );
     	$rate						= ( isset( $data[0] ) ) ? $data[0] : false;
