@@ -45,12 +45,13 @@ class CurrencyController extends BaseController
     public function calc(): Response
     {
     	$forRender	= parent::renderDefault(  );
-    	$forRender['title'] = 'ÐšÐ¾Ð½Ð²ÐµÑ€Ñ‚Ð¾Ñ€ Ð²Ð°Ð»ÑŽÑ‚';
+    	$forRender['title'] = 'Êîíâåðòîð âàëþò';
     	
     	$data					= $this->getDoctrine()->getRepository( Currency::class )->findBy( array('is_active' => 1), array( 'id' => 'DESC' ), 1 ,0 );
-    	$rate						= ( isset( $data[0] ) ) ? $data[0] : 0;
+    	$rate						= ( isset( $data[0] ) ) ? $data[0] : false;
     	
-    	$forRender['rates']	= $rate;
+    	$forRender['euro']	 = ( isset( $rate->euro ) ) ? $rate->euro : 0;
+    	$forRender['create_at']	= ( isset( $rate->create_at ) AND $create_at = (array)$rate->create_at ) ? substr( $create_at['date'], 0, 19 ) : 'N/A';
     	
     	return $this->render('main/calc/index.html.twig',  $forRender );
     }

@@ -22,7 +22,7 @@ class Currency extends Model
     /**
      * @ORM\Column(type="string", length=20)
      */
-    private $euro;
+    public $euro;
 
     public function getId(): ?int
     {
